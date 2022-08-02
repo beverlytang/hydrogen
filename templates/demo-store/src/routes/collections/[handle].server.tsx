@@ -11,7 +11,7 @@ import {
   type HydrogenApiRouteOptions,
 } from '@shopify/hydrogen';
 
-import {PRODUCT_CARD_FRAGMENT} from '~/lib/fragments';
+import {PRODUCT_CARD_FRAGMENT, MEDIA_FRAGMENT} from '~/lib/fragments';
 import {PageHeader, ProductGrid, Section, Text} from '~/components';
 import {NotFound, Layout} from '~/components/index.server';
 
@@ -105,6 +105,7 @@ export async function api(
 }
 
 const COLLECTION_QUERY = gql`
+  ${MEDIA_FRAGMENT}
   ${PRODUCT_CARD_FRAGMENT}
   query CollectionDetails(
     $handle: String!
@@ -142,6 +143,7 @@ const COLLECTION_QUERY = gql`
 `;
 
 const PAGINATE_COLLECTION_QUERY = gql`
+  ${MEDIA_FRAGMENT}
   ${PRODUCT_CARD_FRAGMENT}
   query CollectionPage(
     $handle: String!

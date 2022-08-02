@@ -1,6 +1,6 @@
 import {Suspense, useMemo} from 'react';
 import {gql, useShopQuery, useLocalization} from '@shopify/hydrogen';
-import {PRODUCT_CARD_FRAGMENT} from '~/lib/fragments';
+import {PRODUCT_CARD_FRAGMENT, MEDIA_FRAGMENT} from '~/lib/fragments';
 import {ProductCard, Section} from '~/components';
 import type {
   Product,
@@ -113,6 +113,7 @@ function TopProducts({count}: {count: number}) {
 }
 
 const RECOMMENDED_PRODUCTS_QUERY = gql`
+  ${MEDIA_FRAGMENT}
   ${PRODUCT_CARD_FRAGMENT}
   query productRecommendations(
     $productId: ID!
@@ -132,6 +133,7 @@ const RECOMMENDED_PRODUCTS_QUERY = gql`
 `;
 
 const TOP_PRODUCTS_QUERY = gql`
+  ${MEDIA_FRAGMENT}
   ${PRODUCT_CARD_FRAGMENT}
   query topProducts(
     $count: Int
